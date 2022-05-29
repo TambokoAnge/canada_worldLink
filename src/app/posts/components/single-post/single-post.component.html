@@ -1,0 +1,9 @@
+<div class="post-card" *ngIf="post$|async as post">
+  <h2>{{ post.title }}</h2>
+  <a routerLink="/posts">Back</a>
+  <p>Mis en ligne par {{post.user | uppercase}} le {{post.createDate| date:'d MMMM yyyy, à HH:mm'}} </p>
+  <p>{{ post.description}} </p>
+  <p>{{post.contenu}} </p>
+  <p>Contact: {{post.contact}}</p>
+  <p *ngIf="post.location">Location: {{post.location}}</p>
+</div>

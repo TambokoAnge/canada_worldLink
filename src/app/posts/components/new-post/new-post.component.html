@@ -1,0 +1,42 @@
+<div class="form-card">
+  <h2>NOUVEAU FACESNAP</h2>
+  <form [formGroup]="postForm">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="user">Nom du posteur</label>
+        <input type="text" id="user" formControlName="user">
+      </div>
+      <label for="title">Titre</label>
+      <input type="text" id="title" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="description">Description simple</label>
+      <textarea type="text" id="description" formControlName="description" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="contenu">l'annonce</label>
+      <textarea type="text" id="contenu" formControlName="contenu" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input type="text" id="contact" formControlname="contact">
+    </div>
+    <div class="form-group">
+      <label for="location">Lieu</label>
+      <input type="text" id="location" formControlName="location">
+    </div>
+    <div class="action-buttons">
+      <button type="submit" (click)="onSubmitForm()" [disabled]="postForm.invalid">Enregistrer</button>
+    </div>
+  </form>
+</div>
+<div class="post-card" *ngIf="postPreview$|async as post">
+  <h2>{{ post.title }}</h2>
+  <a routerLink="/posts">Back</a>
+  <p>Mis en ligne par {{post.user | uppercase}} le {{post.createDate| date:'d MMMM yyyy, à HH:mm'}} </p>
+  <p>{{ post.description}} </p>
+  <p>{{post.contenu}} </p>
+  <p>Contact: {{post.contact}}</p>
+  <p *ngIf="post.location">Location: {{post.location}}</p>
+</div>
+
